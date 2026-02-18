@@ -6,7 +6,7 @@ class Vehicle:
         self.fuel_consumption= fuel_consumption
 
         self.current_load = []
-        self.fuel_current = []
+        self.fuel_current = fuel_max
 
 
 
@@ -17,7 +17,13 @@ class Vehicle:
         pass
 
     def load(self,package):
-        pass
+        current_weight = sum(p.weight for p in self.current_load)
+
+        if (current_weight + package.weight) <= self.max_load:
+            self.current_load.append(package)
+            print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {sum(p.weight for p in self.current_load)}')
+        else:
+            print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')
 
 class Truck(Vehicle):
     def __init__(self, name):
@@ -25,4 +31,4 @@ class Truck(Vehicle):
 
 class Van(Vehicle):
     def __init__(self, name):
-        super().__init__(name, max_load=300, fuel_max=150,fuel_consumption=15)
+        super().__init__(name, max_load=150, fuel_max=150,fuel_consumption=15)
