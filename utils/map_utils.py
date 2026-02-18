@@ -19,8 +19,8 @@ def get_coordinates(city):
 
     return x,y
 
-def dist_calc(destination):
-    x1,y1 = get_coordinates('Warsaw')
+def dist_calc(departure, destination):
+    x1,y1 = get_coordinates(departure)
 
     x2,y2 = get_coordinates(destination)
 

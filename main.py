@@ -6,11 +6,12 @@ import pandas as pd
 from services.fleet_manager import dispatcher
 
 def manager():
-    t1 = Truck('Man')
-    t2 = Truck('Scania')
-    t3 = Truck('Volvo')
-    v1 = Van('Sprinter')
-    v2 = Van('Berlingo')
+    fleet_cars = {
+        'North' : [Truck('Man_North'),Van('Sprinter_Morth')],
+        'South' : [Truck('Scania_South'),Van('Berlingo_south')],
+        'West' : [Truck('Volvo_West')],
+        'Center' : [Truck('Daf_Center')]     
+    }
 
     packages = []
 
@@ -49,34 +50,38 @@ def manager():
     grouped_regions = dispatcher(df)
     print(grouped_regions)
 
-    north = []
-    south = []
-    west = []
-    center = []
-    for package in data:
-        if package['region'] == 'North':
-            north.append(package)
-        elif package['region'] == 'South':
-            south.append(package)
-        elif package['region'] == 'West':
-            west.append(package)
-        elif package['region'] == 'Center':
-            center.append(package)
+    grouped = df.groupby('region')
 
-    north_df = pd.DataFrame(north)
-    south_df = pd.DataFrame(south)
-    west_df = pd.DataFrame(west)
-    center_df = pd.DataFrame(center)
-            
+    for region_name, region_df in grouped:
 
-    # for package in df:
-    #     # for region in package['region']:
-    #     #     if region == grouped_regions['region'][1]:
-    #     #         print(f'{package}  {region} {grouped_regions['region'][1]}')
-    #     print( package)
-            
+        print(f'-->{region_name}')
+        sorted_df = region_df.sort_values('weight', ascending=False)
+        vehicles_in_region = fleet_cars.get(region_name,[])
+        if not vehicles_in_region:
+            print(f'Region {region_name}, doesnt have any free cars')
 
+        print(vehicles_in_region)
 
+        for index,row in sorted_df.iterrows():
+
+            package = Package(
+                id=row['id'],
+                weight=row['weight'],
+                status=row['status'],
+                destination=row['destination'],
+                region=row['region']
+            )
+            is_loaded=False
+
+            for vehicle in vehicles_in_region:
+                if(vehicle.load(package)):
+                    is_loaded=True
+                    df.loc[index, 'status']=True
+                    break
+            if not is_loaded:
+                print(f"Cannot load package {row['id']}, {row['weight']}")
+
+    print(df)
 
 
 def main():

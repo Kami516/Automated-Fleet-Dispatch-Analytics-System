@@ -8,7 +8,8 @@ class Vehicle:
         self.current_load = []
         self.fuel_current = fuel_max
 
-
+    def __repr__(self):
+        return f"{self.__class__.__name__}: {self.name} (Max: {self.max_load})"
 
     def drive(self,distance):
         pass
@@ -33,4 +34,4 @@ class Truck(Vehicle):
 
 class Van(Vehicle):
     def __init__(self, name):
-        super().__init__(name, max_load=150, fuel_max=150,fuel_consumption=15)
+        super().__init__(name, max_load=220, fuel_max=150,fuel_consumption=15)
