@@ -22,12 +22,14 @@ class Vehicle:
         if (current_weight + package.weight) <= self.max_load:
             self.current_load.append(package)
             print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {sum(p.weight for p in self.current_load)}')
+            return True
         else:
             print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')
+            return False
 
 class Truck(Vehicle):
     def __init__(self, name):
-        super().__init__(name,max_load=1000,fuel_max=500,fuel_consumption=25)
+        super().__init__(name,max_load=600,fuel_max=500,fuel_consumption=25)
 
 class Van(Vehicle):
     def __init__(self, name):

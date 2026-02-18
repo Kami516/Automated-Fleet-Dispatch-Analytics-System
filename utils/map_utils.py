@@ -27,6 +27,3 @@ def dist_calc(destination):
     distance = math.sqrt(pow((x2-x1),2) + pow((y2-y1),2))
 
     return distance
-
-distance = dist_calc('Cracow')
-print(distance)
