@@ -7,8 +7,8 @@ from services.fleet_manager import dispatcher
 
 def manager():
     fleet_cars = {
-        'North' : [Truck('Man_North'),Van('Sprinter_Morth')],
-        'South' : [Truck('Scania_South'),Van('Berlingo_south')],
+        'North' : [Truck('Man_North'),Van('Sprinter_North')],
+        'South' : [Truck('Scania_South'),Van('Berlingo_South')],
         'West' : [Truck('Volvo_West')],
         'Center' : [Truck('Daf_Center')]     
     }
@@ -77,16 +77,24 @@ def manager():
                 if(vehicle.load(package)):
                     is_loaded=True
                     df.loc[index, 'status']=True
+                    df.loc[index, 'vehicle']=vehicle.name
                     break
             if not is_loaded:
                 print(f"Cannot load package {row['id']}, {row['weight']}")
 
     print(df)
+    return df
+
+def fuel_consumption(df):
+    routes = df.groupby('vehicle')['destination'].unique()
+    print(routes)
+    
 
 
 def main():
     print("Hello from logistics-fleet-simulator!")
-    manager()
+    df = manager()
+    fuel_consumption(df)
 
 
 if __name__ == "__main__":
