@@ -14,13 +14,14 @@ class Vehicle:
     def __repr__(self):
         return f"{self.__class__.__name__}: {self.name} (Max: {self.max_load})"
     
-    def add_log(self,name,action,location,distance_km,fuel_left):
+    def add_log(self,name,action,location,distance_km,fuel_left,details):
         new_log = {
             'vehicle': name,
             'action': action,
             'location': location,
             'distance_km': distance_km,
             'fuel_left': fuel_left,
+            'details': details
         }
         self.log_entry.append(new_log)
 
@@ -29,10 +30,10 @@ class Vehicle:
         if (self.fuel_current -fuel_needed) > 0:
             self.fuel_current = round(self.fuel_current -fuel_needed,2)
             print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
-            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current)
+            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,'')
         else:
             print(f'{self.name} doesnt have enough fuel: {self.fuel_current}/{self.fuel_max}')
-            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current)
+            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,'')
             self.refuel(self.fuel_max-self.fuel_current)
             self.fuel_current = round(self.fuel_current -fuel_needed,2)
             print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
@@ -40,7 +41,7 @@ class Vehicle:
     def refuel(self,amount):
         self.fuel_current = self.fuel_current + amount
         print(f'Vehicle :{self.name}, refuel succesfully {amount}l, fuel status: {self.fuel_current}/{self.fuel_max}')
-        self.add_log(self.name,'refuel',self.position,'Null',self.fuel_max-self.fuel_current)
+        self.add_log(self.name,'refuel',self.position,'0',self.fuel_max-self.fuel_current,f'refuel: {amount}')
 
     def load(self,package):
         current_weight = sum(p.weight for p in self.current_load)
@@ -48,6 +49,7 @@ class Vehicle:
         if (current_weight + package.weight) <= self.max_load:
             self.current_load.append(package)
             print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {sum(p.weight for p in self.current_load)}')
+            self.add_log(self.name,'load',self.position,'0',self.fuel_max-self.fuel_current,f'loaded: {package.id}, with weight: {package.weight}')
             return True
         else:
             print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')

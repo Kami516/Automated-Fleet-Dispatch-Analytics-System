@@ -4,7 +4,7 @@ from models.vehicle import Van
 from utils import map_utils
 import pandas as pd
 from utils.map_utils import dist_calc
-from data.log_creator import vehicle_log_add
+from data.log_creator import vehicle_log_add,package_log_add
 
 def load_data():
     fleet_cars = {
@@ -87,6 +87,8 @@ def load_packages(df, fleet_cars,packages):
                     break
             if not is_loaded:
                 print(f"Cannot load package {row['id']}, {row['weight']}")
+    
+    package_log_add(df)
     
     return df
 
