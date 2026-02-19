@@ -13,11 +13,19 @@ class Vehicle:
         return f"{self.__class__.__name__}: {self.name} (Max: {self.max_load})"
 
     def drive(self,distance):
-        self.fuel_current = round(self.fuel_current -((distance/100) * self.fuel_consumption),2)
-        print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
+        fuel_needed = (distance / 100) * self.fuel_consumption
+        if (self.fuel_current -fuel_needed) > 0:
+            self.fuel_current = round(self.fuel_current -fuel_needed,2)
+            print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
+        else:
+            print(f'{self.name} doesnt have enough fuel: {self.fuel_current}/{self.fuel_max}')
+            self.refuel(self.fuel_max-self.fuel_current)
+            self.fuel_current = round(self.fuel_current -fuel_needed,2)
+            print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
 
     def refuel(self,amount):
-        pass
+        self.fuel_current = self.fuel_current + amount
+        print(f'Vehicle :{self.name}, refuel succesfully {amount}l, fuel status: {self.fuel_current}/{self.fuel_max}')
 
     def load(self,package):
         current_weight = sum(p.weight for p in self.current_load)
@@ -36,4 +44,4 @@ class Truck(Vehicle):
 
 class Van(Vehicle):
     def __init__(self, name, position='Warsaw'):
-        super().__init__(name,position, max_load=220, fuel_max=150,fuel_consumption=20)
+        super().__init__(name,position, max_load=220, fuel_max=50,fuel_consumption=15)

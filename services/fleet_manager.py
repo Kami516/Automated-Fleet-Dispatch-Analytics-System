@@ -63,6 +63,7 @@ def load_packages(df, fleet_cars,packages):
         vehicles_in_region = fleet_cars.get(region_name,[])
         if not vehicles_in_region:
             print(f'Region {region_name}, doesnt have any free cars')
+            continue
 
         print(vehicles_in_region)
 
@@ -90,6 +91,7 @@ def load_packages(df, fleet_cars,packages):
 
 def simulate_routes(df,fleet_cars):
     routes = df.groupby('vehicle')['destination'].unique().reset_index()
+    base_location = 'Warsaw'
     
     for index,row in routes.iterrows():
         print(row['vehicle'])
@@ -116,6 +118,12 @@ def simulate_routes(df,fleet_cars):
             current_vehicle.position = closest
             cities_left.remove(closest)
             drives = drives + 1
+
+        distance = dist_calc(current_vehicle.position,base_location)
+        print(f'Returning to base in {base_location}, {distance}')
+        current_vehicle.drive(distance)
+        current_vehicle.position = base_location
+
 
 def dispatcher(df):
     grouped = df.groupby('region')['weight'].sum().reset_index().sort_values(by='weight', ascending=False)
