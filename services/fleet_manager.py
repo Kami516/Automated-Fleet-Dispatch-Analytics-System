@@ -4,6 +4,7 @@ from models.vehicle import Van
 from utils import map_utils
 import pandas as pd
 from utils.map_utils import dist_calc
+from data.log_creator import vehicle_log_add
 
 def load_data():
     fleet_cars = {
@@ -123,6 +124,9 @@ def simulate_routes(df,fleet_cars):
         print(f'Returning to base in {base_location}, {distance}')
         current_vehicle.drive(distance)
         current_vehicle.position = base_location
+
+    vehicle_log_add(fleet_cars)
+
 
 
 def dispatcher(df):
