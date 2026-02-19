@@ -1,6 +1,7 @@
 class Vehicle:
-    def __init__(self,name,max_load,fuel_max,fuel_consumption):
+    def __init__(self,name,position,max_load,fuel_max,fuel_consumption):
         self.name = name
+        self.position = position
         self.max_load = max_load
         self.fuel_max = fuel_max
         self.fuel_consumption= fuel_consumption
@@ -12,7 +13,8 @@ class Vehicle:
         return f"{self.__class__.__name__}: {self.name} (Max: {self.max_load})"
 
     def drive(self,distance):
-        pass
+        self.fuel_current = round(self.fuel_current -((distance/100) * self.fuel_consumption),2)
+        print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
 
     def refuel(self,amount):
         pass
@@ -29,9 +31,9 @@ class Vehicle:
             return False
 
 class Truck(Vehicle):
-    def __init__(self, name):
-        super().__init__(name,max_load=600,fuel_max=500,fuel_consumption=25)
+    def __init__(self, name, position='Warsaw'):
+        super().__init__(name,position,max_load=600,fuel_max=500,fuel_consumption=35)
 
 class Van(Vehicle):
-    def __init__(self, name):
-        super().__init__(name, max_load=220, fuel_max=150,fuel_consumption=15)
+    def __init__(self, name, position='Warsaw'):
+        super().__init__(name,position, max_load=220, fuel_max=150,fuel_consumption=20)

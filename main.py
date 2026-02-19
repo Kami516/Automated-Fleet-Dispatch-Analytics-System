@@ -4,6 +4,7 @@ from models.vehicle import Van
 from utils import map_utils
 import pandas as pd
 from services.fleet_manager import dispatcher
+from utils.map_utils import dist_calc
 
 def manager():
     fleet_cars = {
@@ -83,18 +84,40 @@ def manager():
                 print(f"Cannot load package {row['id']}, {row['weight']}")
 
     print(df)
-    return df
 
-def fuel_consumption(df):
-    routes = df.groupby('vehicle')['destination'].unique()
-    print(routes)
+    routes = df.groupby('vehicle')['destination'].unique().reset_index()
     
+    for index,row in routes.iterrows():
+        print(row['vehicle'])
+        drives = 0
+        cities_left = list(row['destination'])
+        for region, vehicle_list in fleet_cars.items():
+            for vehicle in vehicle_list:
+                if(vehicle.name == row['vehicle']):
+                    current_vehicle = vehicle
+                    break
+
+        while drives < len(row['destination']):
+            distance_min = 5000
+            closest = ''
+
+            for x  in cities_left:
+                distance = dist_calc(current_vehicle.position,x)
+                print(distance,x)
+                if distance < distance_min:
+                    distance_min = distance
+                    closest = x
+            print(f'Min distance for {row['vehicle']}: {round(distance_min,2)} {current_vehicle.position} ->{closest}')
+            current_vehicle.drive(distance_min)
+            current_vehicle.position = closest
+            cities_left.remove(closest)
+            drives = drives + 1
+   
 
 
 def main():
     print("Hello from logistics-fleet-simulator!")
     df = manager()
-    fuel_consumption(df)
 
 
 if __name__ == "__main__":
