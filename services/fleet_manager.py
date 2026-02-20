@@ -126,6 +126,7 @@ def simulate_routes(df,fleet_cars):
         print(f'Returning to base in {base_location}, {distance}')
         current_vehicle.drive(distance)
         current_vehicle.position = base_location
+        current_vehicle.return_to_base(base_location,distance)
 
     vehicle_log_add(fleet_cars)
 

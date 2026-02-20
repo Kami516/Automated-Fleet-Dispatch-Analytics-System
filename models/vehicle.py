@@ -20,27 +20,35 @@ class Vehicle:
             'action': action,
             'location': location,
             'distance_km': distance_km,
-            'fuel_left': fuel_left,
+            'fuel_left': round(fuel_left,2),
             'details': details
         }
         self.log_entry.append(new_log)
 
     def drive(self,distance):
+
         fuel_needed = (distance / 100) * self.fuel_consumption
-        if (self.fuel_current -fuel_needed) > 0:
+
+        if (self.fuel_current -fuel_needed) >= 0:
+
             self.fuel_current = round(self.fuel_current -fuel_needed,2)
             print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
             self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,'')
+
         else:
-            print(f'{self.name} doesnt have enough fuel: {self.fuel_current}/{self.fuel_max}')
-            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,'')
-            self.refuel(self.fuel_max-self.fuel_current)
-            self.fuel_current = round(self.fuel_current -fuel_needed,2)
-            print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
+            while (self.fuel_current -fuel_needed) < 0:
+                print(f'{self.name} doesnt have enough fuel: {self.fuel_current}/{self.fuel_max}')
+                fuel_needed = fuel_needed -self.fuel_current
+                self.fuel_current = 0
+                self.refuel(self.fuel_max)
+                print(f'{self.name}, refueled to {self.fuel_current}/{self.fuel_max}')
+            self.fuel_current = round(self.fuel_current - fuel_needed, 2)
+            print(f'{self.name} arrived at destination, {self.fuel_current}/{self.fuel_max}')
+            self.add_log(self.name, 'drive', self.position, distance, self.fuel_current, '')
 
     def refuel(self,amount):
-        self.fuel_current = self.fuel_current + amount
-        print(f'Vehicle :{self.name}, refuel succesfully {amount}l, fuel status: {self.fuel_current}/{self.fuel_max}')
+        self.fuel_current = self.fuel_max
+        print(f'Vehicle :{self.name}, refuel succesfully, fuel status: {self.fuel_current}/{self.fuel_max}')
         self.add_log(self.name,'refuel',self.position,'0',self.fuel_max-self.fuel_current,f'refuel: {amount}')
 
     def load(self,package):
@@ -54,6 +62,10 @@ class Vehicle:
         else:
             print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')
             return False
+        
+    def return_to_base(self,position,distance):
+        self.position = position
+        self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,f'Succesfully returned to base in {position}')
 
 class Truck(Vehicle):
     def __init__(self, name, position='Warsaw'):
