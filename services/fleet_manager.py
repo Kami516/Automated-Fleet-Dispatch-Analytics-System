@@ -27,7 +27,7 @@ def load_data():
     # South
     packages.append(Package(15, 400, 'Katowice', 'South', False))
     packages.append(Package(16, 50, 'Katowice', 'South', False))
-    packages.append(Package(17, 75, 'Cracow', 'South', False))
+    packages.append(Package(17, 75, 'Krakow', 'South', False))
     packages.append(Package(18, 5, 'Rzeszow', 'South', False))
     packages.append(Package(19, 180, 'Rzeszow', 'South', False))
 
@@ -123,7 +123,7 @@ def simulate_routes(df,fleet_cars):
             drives = drives + 1
 
         distance = dist_calc(current_vehicle.position,base_location)
-        print(f'Returning to base in {base_location}, {distance}')
+        print(f'Returned to base in {base_location}, {distance}')
         current_vehicle.drive(distance)
         current_vehicle.position = base_location
         current_vehicle.return_to_base(base_location,distance)
@@ -135,4 +135,4 @@ def simulate_routes(df,fleet_cars):
 def dispatcher(df):
     grouped = df.groupby('region')['weight'].sum().reset_index().sort_values(by='weight', ascending=False)
 
-    return grouped
+    return grouped 
