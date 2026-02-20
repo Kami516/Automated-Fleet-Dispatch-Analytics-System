@@ -1,16 +1,17 @@
 import math
+import requests
 
 cities_coordinates = {
-    'Warsaw': (0, 0),
-    'Cracow': (0, 300),
-    'Gdansk': (0, -320),
-    'Wroclaw': (-250, 280),
-    'Poznan': (-300, 0),
-    'Szczecin': (-450, -200),
-    'Rzeszow': (200, 320),
-    'Bialystok': (180, -150),
-    'Lodz': (-120, 100),
-    'Katowice': (-50, 280)
+    'Warsaw': (21.0122, 52.2297),
+    'Gdansk': (18.6466, 54.3520),
+    'Szczecin': (14.5528, 53.4285),
+    'Bialystok': (23.1688, 53.1325),
+    'Katowice': (19.0238, 50.2649),
+    'Cracow': (19.9450, 50.0647),
+    'Rzeszow': (21.9990, 50.0412),
+    'Poznan': (16.9252, 52.4064),
+    'Wroclaw': (17.0385, 51.1079),
+    'Lodz': (19.4570, 51.7592)
 }
 
 def get_coordinates(city):
@@ -20,10 +21,15 @@ def get_coordinates(city):
     return x,y
 
 def dist_calc(departure, destination):
-    x1,y1 = get_coordinates(departure)
+    lon_start,lat_start = get_coordinates(departure)
 
-    x2,y2 = get_coordinates(destination)
+    lon_cel,lat_cel = get_coordinates(destination)
 
-    distance = math.sqrt(pow((x2-x1),2) + pow((y2-y1),2))
+    url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=false'
+
+    request = requests.get(url)
+    response = request.json()
+
+    distance = round((response['routes'][0]['distance'])/1000,2)
 
     return distance

@@ -3,39 +3,39 @@ Man_North,load,Warsaw,0,0.0,"loaded: 11, with weight: 350"
 Man_North,load,Warsaw,0,0.0,"loaded: 14, with weight: 200"
 Man_North,load,Warsaw,0,0.0,"loaded: 13, with weight: 15"
 Man_North,load,Warsaw,0,0.0,"loaded: 30, with weight: 10"
-Man_North,drive,Warsaw,234.30749027719963,82.00999999999999,
-Man_North,drive,Bialystok,247.58836806279893,168.67000000000002,
-Man_North,drive,Gdansk,465.72524088780074,331.66999999999996,
-Man_North,drive,Szczecin,492.44289008980525,331.66999999999996,
-Man_North,refuel,Szczecin,0,0.0,refuel: 331.66999999999996
+Man_North,drive,Warsaw,197.4,69.08999999999997,
+Man_North,drive,Bialystok,427.8,218.82,
+Man_North,drive,Gdansk,368.61,347.83000000000004,
+Man_North,drive,Szczecin,568.16,347.83000000000004,
+Man_North,refuel,Szczecin,0,0.0,refuel: 347.83000000000004
 Sprinter_North,load,Warsaw,0,0.0,"loaded: 12, with weight: 120"
 Sprinter_North,load,Warsaw,0,0.0,"loaded: 29, with weight: 85"
-Sprinter_North,drive,Warsaw,234.30749027719963,35.15,
-Sprinter_North,drive,Bialystok,247.58836806279893,35.15,
-Sprinter_North,refuel,Bialystok,0,0.0,refuel: 35.15
-Sprinter_North,drive,Gdansk,320.0,37.14,
-Sprinter_North,refuel,Gdansk,0,0.0,refuel: 37.14
+Sprinter_North,drive,Warsaw,197.4,29.61,
+Sprinter_North,drive,Bialystok,427.8,29.61,
+Sprinter_North,refuel,Bialystok,0,0.0,refuel: 29.61
+Sprinter_North,drive,Gdansk,339.52,64.17,
+Sprinter_North,refuel,Gdansk,0,0.0,refuel: 64.17
 Scania_South,load,Warsaw,0,0.0,"loaded: 15, with weight: 400"
 Scania_South,load,Warsaw,0,0.0,"loaded: 19, with weight: 180"
 Scania_South,load,Warsaw,0,0.0,"loaded: 18, with weight: 5"
-Scania_South,drive,Warsaw,284.42925306655786,99.55000000000001,
-Scania_South,drive,Katowice,253.17977802344325,188.16000000000003,
-Scania_South,drive,Rzeszow,377.35924528226417,320.24,
+Scania_South,drive,Warsaw,302.85,106.0,
+Scania_South,drive,Katowice,246.66,192.32999999999998,
+Scania_South,drive,Rzeszow,329.54,307.66999999999996,
 Berlingo_South,load,Warsaw,0,0.0,"loaded: 17, with weight: 75"
 Berlingo_South,load,Warsaw,0,0.0,"loaded: 16, with weight: 50"
-Berlingo_South,drive,Warsaw,284.42925306655786,42.66,
-Berlingo_South,drive,Katowice,53.85164807134504,42.66,
-Berlingo_South,refuel,Katowice,0,0.0,refuel: 42.66
-Berlingo_South,drive,Cracow,300.0,8.079999999999998,
-Berlingo_South,refuel,Cracow,0,0.0,refuel: 8.079999999999998
+Berlingo_South,drive,Warsaw,294.89,44.230000000000004,
+Berlingo_South,drive,Cracow,82.0,44.230000000000004,
+Berlingo_South,refuel,Cracow,0,0.0,refuel: 44.230000000000004
+Berlingo_South,drive,Katowice,303.29,12.299999999999997,
+Berlingo_South,refuel,Katowice,0,0.0,refuel: 12.299999999999997
 Volvo_West,load,Warsaw,0,0.0,"loaded: 27, with weight: 300"
 Volvo_West,load,Warsaw,0,0.0,"loaded: 25, with weight: 140"
 Volvo_West,load,Warsaw,0,0.0,"loaded: 26, with weight: 60"
 Volvo_West,load,Warsaw,0,0.0,"loaded: 28, with weight: 45"
-Volvo_West,drive,Warsaw,300.0,105.0,
-Volvo_West,drive,Poznan,284.42925306655786,204.55,
-Volvo_West,drive,Wroclaw,375.3664875824692,335.93,
+Volvo_West,drive,Warsaw,310.22,108.57999999999998,
+Volvo_West,drive,Poznan,182.24,172.36,
+Volvo_West,drive,Wroclaw,356.3,297.07,
 Daf_Center,load,Warsaw,0,0.0,"loaded: 23, with weight: 250"
 Daf_Center,load,Warsaw,0,0.0,"loaded: 24, with weight: 20"
-Daf_Center,drive,Warsaw,156.20499351813308,54.670000000000016,
-Daf_Center,drive,Lodz,156.20499351813308,109.33999999999997,
+Daf_Center,drive,Warsaw,139.25,48.74000000000001,
+Daf_Center,drive,Lodz,137.36,96.82,
