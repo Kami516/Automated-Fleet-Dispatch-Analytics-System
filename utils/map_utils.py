@@ -1,4 +1,3 @@
-import math
 import requests
 
 cities_coordinates = {
@@ -15,10 +14,7 @@ cities_coordinates = {
 }
 
 def get_coordinates(city):
-    x = cities_coordinates[city][0]
-    y = cities_coordinates[city][1]
-
-    return x,y
+    return cities_coordinates[city]
 
 def dist_calc(departure, destination):
     lon_start,lat_start = get_coordinates(departure)
@@ -27,9 +23,12 @@ def dist_calc(departure, destination):
 
     url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=false'
 
-    request = requests.get(url)
-    response = request.json()
-
-    distance = round((response['routes'][0]['distance'])/1000,2)
+    response = requests.get(url)
+    if response.status_code == 200:
+        data = response.json()
+        distance = round((data['routes'][0]['distance'])/1000,2)
+    else:
+        print('Can`t connect to Api ', response.status_code)
+        distance = 0
 
     return distance
