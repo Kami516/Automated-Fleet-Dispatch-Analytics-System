@@ -5,6 +5,7 @@ from utils import map_utils
 import pandas as pd
 from utils.map_utils import dist_calc
 from data.log_creator import vehicle_log_add,package_log_add
+from db.loader import load_data_from_db
 
 def load_data():
     fleet_cars = {
@@ -14,35 +15,37 @@ def load_data():
         'Center' : [Truck('Daf_Center')]     
     }
 
-    packages = []
+    # packages = []
 
-    # North
-    packages.append(Package(11, 350, 'Gdansk', 'North', False))
-    packages.append(Package(12, 120, 'Gdansk', 'North', False))
-    packages.append(Package(13, 15, 'Szczecin', 'North', False))
-    packages.append(Package(14, 200, 'Szczecin', 'North', False))
-    packages.append(Package(29, 85, 'Bialystok', 'North', False))
-    packages.append(Package(30, 10, 'Bialystok', 'North', False))
+    # # North
+    # packages.append(Package(11, 350, 'Gdansk', 'North', False))
+    # packages.append(Package(12, 120, 'Gdansk', 'North', False))
+    # packages.append(Package(13, 15, 'Szczecin', 'North', False))
+    # packages.append(Package(14, 200, 'Szczecin', 'North', False))
+    # packages.append(Package(29, 85, 'Bialystok', 'North', False))
+    # packages.append(Package(30, 10, 'Bialystok', 'North', False))
 
-    # South
-    packages.append(Package(15, 400, 'Katowice', 'South', False))
-    packages.append(Package(16, 50, 'Katowice', 'South', False))
-    packages.append(Package(17, 75, 'Krakow', 'South', False))
-    packages.append(Package(18, 5, 'Rzeszow', 'South', False))
-    packages.append(Package(19, 180, 'Rzeszow', 'South', False))
+    # # South
+    # packages.append(Package(15, 400, 'Katowice', 'South', False))
+    # packages.append(Package(16, 50, 'Katowice', 'South', False))
+    # packages.append(Package(17, 75, 'Krakow', 'South', False))
+    # packages.append(Package(18, 5, 'Rzeszow', 'South', False))
+    # packages.append(Package(19, 180, 'Rzeszow', 'South', False))
 
-    # West
-    packages.append(Package(25, 140, 'Poznan', 'West', False))
-    packages.append(Package(26, 60, 'Poznan', 'West', False))
-    packages.append(Package(27, 300, 'Wroclaw', 'West', False))
-    packages.append(Package(28, 45, 'Wroclaw', 'West', False))
+    # # West
+    # packages.append(Package(25, 140, 'Poznan', 'West', False))
+    # packages.append(Package(26, 60, 'Poznan', 'West', False))
+    # packages.append(Package(27, 300, 'Wroclaw', 'West', False))
+    # packages.append(Package(28, 45, 'Wroclaw', 'West', False))
 
-    # Center
-    packages.append(Package(23, 250, 'Lodz', 'Center', False))
-    packages.append(Package(24, 20, 'Lodz', 'Center', False))
+    # # Center
+    # packages.append(Package(23, 250, 'Lodz', 'Center', False))
+    # packages.append(Package(24, 20, 'Lodz', 'Center', False))
 
-    data = [p.__dict__ for p in packages]
-    df = pd.DataFrame(data)
+    # data = [p.__dict__ for p in packages]
+    # df = pd.DataFrame(data)
+
+    df,packages = load_data_from_db()
 
     return (df, fleet_cars,packages)
 

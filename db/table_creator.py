@@ -2,7 +2,8 @@ import sqlite3
 
 def create_table_packages():
     script =(
-        '''CREATE TABLE IF NOT EXISTS Packages(
+        '''DROP TABLE IF EXISTS Packages;
+        CREATE TABLE IF NOT EXISTS Packages(
         id INTEGER PRIMARY KEY,
         weight INTEGER,
         destination TEXT,
