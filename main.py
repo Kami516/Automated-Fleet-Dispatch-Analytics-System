@@ -1,6 +1,8 @@
 from services.fleet_manager import load_data,load_packages,simulate_routes
+from db.table_creator import create_db
 
 def manager():
+    create_db()
     df, fleet_cars,packages = load_data()
     loaded_df = load_packages(df, fleet_cars,packages)
     simulate_routes(loaded_df, fleet_cars)
