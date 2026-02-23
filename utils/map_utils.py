@@ -38,3 +38,26 @@ def dist_calc(departure, destination):
     except requests.exceptions.RequestException as e:
         print(f"Network error in dist_calc: {e}")
         return 0
+    
+def get_route_geometry(city1, city2):
+    lon_start,lat_start = get_coordinates(city1)
+
+    lon_cel,lat_cel = get_coordinates(city2)
+
+    url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=full&geometries=geojson'
+
+    try:
+        response = requests.get(url, timeout=10)
+
+        if response.status_code == 200:
+            data = response.json()
+            route = data['routes'][0]['geometry']['coordinates']
+            reverse_cords = [[lat,lon] for lon,lat in route]
+            return reverse_cords
+        else:
+            print('Can`t connect to Api ', response.status_code)
+            return 0
+
+    except requests.exceptions.RequestException as e:
+        print(f"Network error in dist_calc: {e}")
+        return 0
