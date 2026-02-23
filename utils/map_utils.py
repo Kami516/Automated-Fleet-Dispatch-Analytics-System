@@ -4,7 +4,7 @@ def get_coordinates(city):
     api_key = 'yKIeo0IoSHEBdFCpO7bQBVfwyqGOiuHp0YgRmQon'
     api_url = f'https://api.api-ninjas.com/v1/city?name={city}'
     headers = {'X-Api-Key': api_key}
-    response = requests.get(api_url, headers)
+    response = requests.get(api_url, headers=headers, timeout=10)
 
     if response.status_code == 200:
         data = response.json()
@@ -24,13 +24,17 @@ def dist_calc(departure, destination):
 
     url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=false'
 
-    response = requests.get(url)
+    try:
+        response = requests.get(url, timeout=10)
 
-    if response.status_code == 200:
-        data = response.json()
-        distance = round((data['routes'][0]['distance'])/1000,2)
-    else:
-        print('Can`t connect to Api ', response.status_code)
-        distance = 0
+        if response.status_code == 200:
+            data = response.json()
+            distance = round((data['routes'][0]['distance'])/1000,2)
+            return distance
+        else:
+            print('Can`t connect to Api ', response.status_code)
+            return 0
 
-    return distance
+    except requests.exceptions.RequestException as e:
+        print(f"Network error in dist_calc: {e}")
+        return 0

@@ -5,7 +5,7 @@ from utils import map_utils
 import pandas as pd
 from utils.map_utils import dist_calc
 from data.log_creator import vehicle_log_add,package_log_add
-from db.loader import load_data_from_db
+from db.loader import load_data_from_db,package_update_db
 
 def load_data():
     fleet_cars = {
@@ -92,6 +92,7 @@ def load_packages(df, fleet_cars,packages):
                 print(f"Cannot load package {row['id']}, {row['weight']}")
     
     package_log_add(df)
+    package_update_db(df)
     
     return df
 

@@ -1,6 +1,6 @@
 import sqlite3
 
-def create_table_packages():
+def create_tables():
     script =(
         '''DROP TABLE IF EXISTS Packages;
         CREATE TABLE IF NOT EXISTS Packages(
@@ -9,6 +9,18 @@ def create_table_packages():
         destination TEXT,
         region TEXT,
         status INTEGER
+        );
+
+        DROP TABLE IF EXISTS Vehicles;
+        CREATE TABLE IF NOT EXISTS Vehicles(
+        id INTEGER PRIMARY KEY,
+        name TEXT,
+        position TEXT,
+        max_load INTEGER,
+        fuel_max INTEGER,
+        fuel_consumption INTEGER,
+        region TEXT,
+        type TEXT
         );
         '''
     )
@@ -49,7 +61,7 @@ def insert_packages():
     return script,data
 
 def create_db():
-    create_packages_script = create_table_packages()
+    create_packages_script = create_tables()
     insert_packages_script,data = insert_packages()
 
     with sqlite3.connect('logistics_fleet.db') as conn:
