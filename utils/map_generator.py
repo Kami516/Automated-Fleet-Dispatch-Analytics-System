@@ -16,16 +16,28 @@ def generate_maps():
             gps_coordinates.append((lat,lon))
         
         for index,point in enumerate(gps_coordinates,start=0):
-            folium.Marker(
-                location=point, 
-                popup=f'Stop nr {index}',
-                icon=BeautifyIcon(
-                    icon_shape='marker',
-                    number=index,
-                    border_color='blue',
-                    text_color='red'
-                )
-            ).add_to(map)
+            if point == gps_coordinates[-1]:
+                    folium.Marker(
+                    location=point, 
+                    popup=f"{route_list['vehicle']} returned into fleet base",
+                    icon=BeautifyIcon(
+                        icon_shape='marker',
+                        number=index,
+                        border_color='brown',
+                        text_color='brown'
+                    )
+                ).add_to(map)
+            else:
+                folium.Marker(
+                    location=point, 
+                    popup=f'Stop nr {index}',
+                    icon=BeautifyIcon(
+                        icon_shape='marker',
+                        number=index,
+                        border_color='blue',
+                        text_color='red'
+                    )
+                ).add_to(map)
 
         for city1,city2 in pairwise(route_list['route']):
             detailed_route = get_route_geometry(city1,city2)
