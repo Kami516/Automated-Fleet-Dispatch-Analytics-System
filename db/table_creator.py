@@ -1,4 +1,6 @@
 import sqlite3
+from models.vehicle import Truck
+from models.vehicle import Van
 
 def create_tables():
     script =(
@@ -60,6 +62,40 @@ def insert_packages():
 
     return script,data
 
+
+def insert_vehicles():
+    fleet_cars = {
+        'North' : [Truck('Man_North'),Van('Sprinter_North')],
+        'South' : [Truck('Scania_South'),Van('Berlingo_South')],
+        'West' : [Truck('Volvo_West')],
+        'Center' : [Truck('Daf_Center')]     
+    }
+
+    with sqlite3.connect('logistics_fleet.db') as conn:
+
+        cur = conn.cursor()
+        query = '''INSERT INTO Vehicles (name, position, max_load, fuel_max, fuel_consumption, region, type)
+        VALUES(?,?,?,?,?,?,?)          
+        '''
+
+        for region_name, vehicle_list in fleet_cars.items():
+            for v in vehicle_list:
+
+                values=(
+                    v.name,
+                    v.position,
+                    v.max_load,
+                    v.fuel_max,
+                    v.fuel_consumption,
+                    region_name,
+                    v.__class__.__name__
+                )
+                cur.execute(query,values)
+                conn.commit()
+
+    return fleet_cars
+
+
 def create_db():
     create_packages_script = create_tables()
     insert_packages_script,data = insert_packages()
@@ -72,3 +108,5 @@ def create_db():
         cur.executemany(insert_packages_script,data)
         conn.commit()
         print(f'Added {len(data)} packages into data base!')
+
+    insert_vehicles()

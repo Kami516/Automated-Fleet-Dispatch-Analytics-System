@@ -5,15 +5,15 @@ from utils import map_utils
 import pandas as pd
 from utils.map_utils import dist_calc
 from data.log_creator import vehicle_log_add,package_log_add
-from db.loader import load_data_from_db,package_update_db
+from db.loader import load_data_from_db,package_update_db,load_fleet_from_db
 
 def load_data():
-    fleet_cars = {
-        'North' : [Truck('Man_North'),Van('Sprinter_North')],
-        'South' : [Truck('Scania_South'),Van('Berlingo_South')],
-        'West' : [Truck('Volvo_West')],
-        'Center' : [Truck('Daf_Center')]     
-    }
+    # fleet_cars = {
+    #     'North' : [Truck('Man_North'),Van('Sprinter_North')],
+    #     'South' : [Truck('Scania_South'),Van('Berlingo_South')],
+    #     'West' : [Truck('Volvo_West')],
+    #     'Center' : [Truck('Daf_Center')]     
+    # }
 
     # packages = []
 
@@ -46,6 +46,7 @@ def load_data():
     # df = pd.DataFrame(data)
 
     df,packages = load_data_from_db()
+    fleet_cars = load_fleet_from_db()
 
     return (df, fleet_cars,packages)
 

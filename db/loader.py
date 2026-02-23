@@ -1,6 +1,8 @@
 import sqlite3
 import pandas as pd
 from models.package import Package
+from models.vehicle import Truck
+from models.vehicle import Van
 
 def load_data_from_db():
     conn = sqlite3.connect('logistics_fleet.db')
@@ -13,6 +15,21 @@ def load_data_from_db():
 
     return df_packages,packages
 
+def load_fleet_from_db():
+    fleet_cars = {}
+    conn = sqlite3.connect('logistics_fleet.db')
+    df_vehicles = pd.read_sql_query("SELECT * FROM Vehicles", conn)
+    conn.close()
+
+    for vehicle in df_vehicles.itertuples(index=False):
+        if vehicle.type == 'Van':
+            new_vehicle = Van(vehicle.name, vehicle.position)
+        elif vehicle.type == 'Truck':
+            new_vehicle = Truck(vehicle.name, vehicle.position)
+
+        fleet_cars.setdefault(vehicle.region,[]).append(new_vehicle)
+
+    return fleet_cars
 
 def package_update_db(df):
     conn = sqlite3.connect('logistics_fleet.db')
