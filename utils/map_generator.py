@@ -32,7 +32,7 @@ def generate_maps():
 
             folium.PolyLine(locations=detailed_route, color='blue', weight=4).add_to(map)
 
-        file_path = f"map_{route_list['vehicle']}.html"
+        file_path = f"utils/map_{route_list['vehicle']}.html"
 
         map.save(file_path)
         print(f'Route generated for {route_list['vehicle']}')

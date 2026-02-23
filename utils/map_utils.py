@@ -1,7 +1,8 @@
 import requests
 
 def get_coordinates(city):
-    api_key = 'yKIeo0IoSHEBdFCpO7bQBVfwyqGOiuHp0YgRmQon'
+    # api_key = 'yKIeo0IoSHEBdFCpO7bQBVfwyqGOiuHp0YgRmQon'
+    api_key = 'Ls0QYdBZjdwY8weUCCdg4GqRcQ2mDFESEGguGFU7'
     api_url = f'https://api.api-ninjas.com/v1/city?name={city}'
     headers = {'X-Api-Key': api_key}
     response = requests.get(api_url, headers=headers, timeout=10)
