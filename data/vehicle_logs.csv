@@ -1,47 +1,55 @@
 vehicle,action,location,distance_km,fuel_left,details,price_of_fuel
-Man_North,load,Warsaw,0,0.0,"loaded: 11, with weight: 350",()
-Man_North,load,Warsaw,0,0.0,"loaded: 14, with weight: 200",()
-Man_North,load,Warsaw,0,0.0,"loaded: 13, with weight: 15",()
-Man_North,load,Warsaw,0,0.0,"loaded: 30, with weight: 10",()
-Man_North,drive,Warsaw,201.1,70.38,Route completed with fuel usage: 70.385,()
-Man_North,drive,Bialystok,434.16,222.34,Route completed with fuel usage: 222.341,()
-Man_North,drive,Gdansk,369.59,351.7,Route completed with fuel usage: 351.6975,()
-Man_North,refuel,Szczecin,0,0.0,refuel: 500,()
-Man_North,drive,Szczecin,568.33,449.38,Route completed with fuel usage: 851.6975,()
-Man_North,drive,Warsaw,568.33,50.62,"Succesfully returned to base in Warsaw, with fuel usage: 851.6975",()
-Sprinter_North,load,Warsaw,0,0.0,"loaded: 12, with weight: 120",()
-Sprinter_North,load,Warsaw,0,0.0,"loaded: 29, with weight: 85",()
-Sprinter_North,drive,Warsaw,201.1,30.17,Route completed with fuel usage: 30.165000000000003,()
-Sprinter_North,refuel,Bialystok,0,0.0,refuel: 50,()
-Sprinter_North,drive,Bialystok,434.16,4.71,Route completed with fuel usage: 80.165,()
-Sprinter_North,refuel,Gdansk,0,0.0,refuel: 50,()
-Sprinter_North,drive,Gdansk,344.63,3.02,Route completed with fuel usage: 130.16500000000002,()
-Sprinter_North,drive,Warsaw,344.63,46.98,"Succesfully returned to base in Warsaw, with fuel usage: 130.16500000000002",()
-Scania_South,load,Warsaw,0,0.0,"loaded: 15, with weight: 400",()
-Scania_South,load,Warsaw,0,0.0,"loaded: 19, with weight: 180",()
-Scania_South,load,Warsaw,0,0.0,"loaded: 18, with weight: 5",()
-Scania_South,drive,Warsaw,309.98,108.49,Route completed with fuel usage: 108.49300000000001,()
-Scania_South,drive,Katowice,245.88,194.55,Route completed with fuel usage: 194.55100000000002,()
-Scania_South,drive,Rzeszow,328.54,309.54,Route completed with fuel usage: 309.54,()
-Scania_South,drive,Warsaw,328.54,309.54,"Succesfully returned to base in Warsaw, with fuel usage: 309.54",()
-Berlingo_South,load,Warsaw,0,0.0,"loaded: 17, with weight: 75",()
-Berlingo_South,load,Warsaw,0,0.0,"loaded: 16, with weight: 50",()
-Berlingo_South,drive,Warsaw,297.21,44.58,Route completed with fuel usage: 44.5815,()
-Berlingo_South,refuel,Krakow,0,0.0,refuel: 50,()
-Berlingo_South,drive,Krakow,83.67,42.87,Route completed with fuel usage: 94.5815,()
-Berlingo_South,refuel,Katowice,0,0.0,refuel: 50,()
-Berlingo_South,drive,Katowice,319.72,44.91,Route completed with fuel usage: 144.5815,()
-Berlingo_South,drive,Warsaw,319.72,5.09,"Succesfully returned to base in Warsaw, with fuel usage: 144.5815",()
-Volvo_West,load,Warsaw,0,0.0,"loaded: 27, with weight: 300",()
-Volvo_West,load,Warsaw,0,0.0,"loaded: 25, with weight: 140",()
-Volvo_West,load,Warsaw,0,0.0,"loaded: 26, with weight: 60",()
-Volvo_West,load,Warsaw,0,0.0,"loaded: 28, with weight: 45",()
-Volvo_West,drive,Warsaw,311.86,109.15,Route completed with fuel usage: 109.15100000000001,()
-Volvo_West,drive,Poznan,180.14,172.2,Route completed with fuel usage: 172.20000000000002,()
-Volvo_West,drive,Wroclaw,356.95,297.13,Route completed with fuel usage: 297.1325,()
-Volvo_West,drive,Warsaw,356.95,297.13,"Succesfully returned to base in Warsaw, with fuel usage: 297.1325",()
-Daf_Center,load,Warsaw,0,0.0,"loaded: 23, with weight: 250",()
-Daf_Center,load,Warsaw,0,0.0,"loaded: 24, with weight: 20",()
-Daf_Center,drive,Warsaw,129.46,45.31,Route completed with fuel usage: 45.311,()
-Daf_Center,drive,Lodz,130.36,90.94,Route completed with fuel usage: 90.93700000000001,()
-Daf_Center,drive,Warsaw,130.36,90.94,"Succesfully returned to base in Warsaw, with fuel usage: 90.93700000000001",()
+Man_North,load,Warsaw,0,0.0,"loaded: 11, with weight: 350",0.0
+Man_North,load,Warsaw,0,0.0,"loaded: 14, with weight: 200",0.0
+Man_North,load,Warsaw,0,0.0,"loaded: 13, with weight: 15",0.0
+Man_North,load,Warsaw,0,0.0,"loaded: 30, with weight: 10",0.0
+Man_North,drive,Warsaw,201.1,70.38,Route completed with fuel usage: 70.385,397.67525000000006
+Man_North,drive,Bialystok,434.16,222.34,Route completed with fuel usage: 222.341,1256.22665
+Man_North,drive,Gdansk,369.59,351.7,Route completed with fuel usage: 351.6975,1987.090875
+Man_North,refuel,Szczecin,0,0.0,refuel: 500,3110.9634500000006
+Man_North,drive,Szczecin,568.33,449.38,Route completed with fuel usage: 550.613,3110.9634500000006
+Man_North,drive,Warsaw,568.33,249.54,Route completed with fuel usage: 749.5285000000001,4234.8360250000005
+Man_North,drive,Warsaw,568.33,249.54,"Succesfully returned to base in Warsaw, with fuel usage: 749.5285000000001",4234.8360250000005
+Sprinter_North,load,Warsaw,0,0.0,"loaded: 12, with weight: 120",0.0
+Sprinter_North,load,Warsaw,0,0.0,"loaded: 29, with weight: 85",0.0
+Sprinter_North,drive,Warsaw,201.1,30.17,Route completed with fuel usage: 30.165000000000003,170.43225000000004
+Sprinter_North,refuel,Bialystok,0,0.0,refuel: 50,538.3828500000001
+Sprinter_North,drive,Bialystok,434.16,4.71,Route completed with fuel usage: 95.28900000000002,538.3828500000001
+Sprinter_North,refuel,Gdansk,0,0.0,refuel: 50,830.4567750000002
+Sprinter_North,drive,Gdansk,344.63,3.02,Route completed with fuel usage: 146.98350000000002,830.4567750000002
+Sprinter_North,refuel,Warsaw,0,0.0,refuel: 50,1122.5307000000003
+Sprinter_North,drive,Warsaw,344.63,1.33,Route completed with fuel usage: 198.67800000000003,1122.5307000000003
+Sprinter_North,drive,Warsaw,344.63,48.67,"Succesfully returned to base in Warsaw, with fuel usage: 198.67800000000003",1122.5307000000003
+Scania_South,load,Warsaw,0,0.0,"loaded: 15, with weight: 400",0.0
+Scania_South,load,Warsaw,0,0.0,"loaded: 19, with weight: 180",0.0
+Scania_South,load,Warsaw,0,0.0,"loaded: 18, with weight: 5",0.0
+Scania_South,drive,Warsaw,309.98,108.49,Route completed with fuel usage: 108.49300000000001,612.9854500000001
+Scania_South,drive,Katowice,245.88,194.55,Route completed with fuel usage: 194.55100000000002,1099.2131500000003
+Scania_South,drive,Rzeszow,328.54,309.54,Route completed with fuel usage: 309.54,1748.9010000000003
+Scania_South,drive,Warsaw,328.54,424.53,Route completed with fuel usage: 424.529,2398.58885
+Scania_South,drive,Warsaw,328.54,424.53,"Succesfully returned to base in Warsaw, with fuel usage: 424.529",2398.58885
+Berlingo_South,load,Warsaw,0,0.0,"loaded: 17, with weight: 75",0.0
+Berlingo_South,load,Warsaw,0,0.0,"loaded: 16, with weight: 50",0.0
+Berlingo_South,drive,Warsaw,297.21,44.58,Route completed with fuel usage: 44.5815,251.885475
+Berlingo_South,refuel,Krakow,0,0.0,refuel: 50,322.7958
+Berlingo_South,drive,Krakow,83.67,42.87,Route completed with fuel usage: 57.132,322.7958
+Berlingo_South,refuel,Katowice,0,0.0,refuel: 50,593.7585
+Berlingo_South,drive,Katowice,319.72,44.91,Route completed with fuel usage: 105.09,593.7585
+Berlingo_South,refuel,Warsaw,0,0.0,refuel: 50,864.7212000000001
+Berlingo_South,drive,Warsaw,319.72,46.95,Route completed with fuel usage: 153.048,864.7212000000001
+Berlingo_South,drive,Warsaw,319.72,3.05,"Succesfully returned to base in Warsaw, with fuel usage: 153.048",864.7212000000001
+Volvo_West,load,Warsaw,0,0.0,"loaded: 27, with weight: 300",0.0
+Volvo_West,load,Warsaw,0,0.0,"loaded: 25, with weight: 140",0.0
+Volvo_West,load,Warsaw,0,0.0,"loaded: 26, with weight: 60",0.0
+Volvo_West,load,Warsaw,0,0.0,"loaded: 28, with weight: 45",0.0
+Volvo_West,drive,Warsaw,311.86,109.15,Route completed with fuel usage: 109.15100000000001,616.70315
+Volvo_West,drive,Poznan,180.14,172.2,Route completed with fuel usage: 172.20000000000002,972.9300000000002
+Volvo_West,drive,Wroclaw,356.95,297.13,Route completed with fuel usage: 297.1325,1678.7986250000001
+Volvo_West,drive,Warsaw,356.95,422.06,Route completed with fuel usage: 422.065,2384.66725
+Volvo_West,drive,Warsaw,356.95,422.06,"Succesfully returned to base in Warsaw, with fuel usage: 422.065",2384.66725
+Daf_Center,load,Warsaw,0,0.0,"loaded: 23, with weight: 250",0.0
+Daf_Center,load,Warsaw,0,0.0,"loaded: 24, with weight: 20",0.0
+Daf_Center,drive,Warsaw,129.46,45.31,Route completed with fuel usage: 45.311,256.00715
+Daf_Center,drive,Lodz,130.36,90.94,Route completed with fuel usage: 90.93700000000001,513.7940500000001
+Daf_Center,drive,Warsaw,130.36,136.57,Route completed with fuel usage: 136.56300000000002,771.5809500000001
+Daf_Center,drive,Warsaw,130.36,136.57,"Succesfully returned to base in Warsaw, with fuel usage: 136.56300000000002",771.5809500000001
