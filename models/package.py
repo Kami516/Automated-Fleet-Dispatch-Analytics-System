@@ -7,5 +7,5 @@ class Package:
         self.status = status
         self.region = region
 
-        self.cost = (5 * (1*self.weight) + (3*self.volume))
+        self.cost = round((15 + (5*self.weight) + (10*self.volume)),2)
         
