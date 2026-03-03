@@ -6,4 +6,6 @@ class Package:
         self.destination = destination
         self.status = status
         self.region = region
+
+        self.cost = (5 * (1*self.weight) + (3*self.volume))
         

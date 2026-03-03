@@ -15,10 +15,12 @@ class Vehicle:
         self.fuel_avg_price = 5.65
         self.fuel_cost = 0.0
 
+        self.total_revenue = 0.0
+
     def __repr__(self):
         return f"{self.__class__.__name__}: {self.name} (Max: {self.max_load})"
     
-    def add_log(self,name,action,location,distance_km,fuel_left,details,fuel_cost):
+    def add_log(self,name,action,location,distance_km,fuel_left,details,fuel_cost,package_cost):
         new_log = {
             'vehicle': name,
             'action': action,
@@ -26,7 +28,8 @@ class Vehicle:
             'distance_km': distance_km,
             'fuel_left': round(fuel_left,2),
             'details': details,
-            'price_of_fuel' : fuel_cost
+            'cost_of_fuel' : fuel_cost,
+            'cost_of_package': package_cost
         }
         self.log_entry.append(new_log)
 
@@ -40,7 +43,7 @@ class Vehicle:
             self.fuel_current = round(self.fuel_current -fuel_needed,2)
             print(f'{self.name}, {self.fuel_current}/{self.fuel_max}')
             self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
-            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,f'Route completed with fuel usage: {self.fuel_used}',self.fuel_cost)
+            self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,f'Route completed with fuel usage: {self.fuel_used}',self.fuel_cost,'')
 
         else:
             while (self.fuel_current -fuel_needed) < 0:
@@ -52,13 +55,13 @@ class Vehicle:
             self.fuel_current = round(self.fuel_current - fuel_needed, 2)
             print(f'{self.name} arrived at destination, {self.fuel_current}/{self.fuel_max}')
             self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
-            self.add_log(self.name, 'drive', self.position, distance, self.fuel_current, f'Route completed with fuel usage: {self.fuel_used}',self.fuel_cost)
+            self.add_log(self.name, 'drive', self.position, distance, self.fuel_current, f'Route completed with fuel usage: {self.fuel_used}',self.fuel_cost,'')
 
     def refuel(self,amount):
         self.fuel_current = self.fuel_max
         print(f'Vehicle :{self.name}, refuel succesfully, fuel status: {self.fuel_current}/{self.fuel_max}')
         self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
-        self.add_log(self.name,'refuel',self.position,'0',self.fuel_max-self.fuel_current,f'refuel: {amount}',self.fuel_cost)
+        self.add_log(self.name,'refuel',self.position,'0',self.fuel_max-self.fuel_current,f'refuel: {amount}',self.fuel_cost,'')
 
     def load(self,package):
         current_weight = sum(p.weight for p in self.current_load)
@@ -66,9 +69,10 @@ class Vehicle:
 
         if ((current_weight + package.weight) <= self.max_load) and ((current_volume + package.volume) <= self.volume_capacity):
             self.current_load.append(package)
+            self.total_revenue+=package.cost
             self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
-            print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {current_weight + package.weight} with {current_volume + package.volume} volume')
-            self.add_log(self.name,'load',self.position,'0',self.fuel_max-self.fuel_current,f'loaded: {package.id}, with weight: {package.weight} and {package.volume} volume',self.fuel_cost)
+            print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {current_weight + package.weight} with {current_volume + package.volume} volume. Cost: {package.cost}')
+            self.add_log(self.name,'load',self.position,'0',self.fuel_max-self.fuel_current,f'loaded: {package.id}, with weight: {package.weight} and {package.volume} volume. Cost: Cost: {package.cost}',self.fuel_cost,package.cost)
             return True
         else:
             if ((current_volume + package.volume) <= self.volume_capacity):
@@ -81,7 +85,7 @@ class Vehicle:
     def return_to_base(self,position,distance):
         self.drive(distance)
         self.position = position
-        self.add_log(self.name,'drive',self.position,distance,self.fuel_max-self.fuel_current,f'Succesfully returned to base in {position}, with fuel usage: {self.fuel_used}',self.fuel_cost)
+        self.add_log(self.name,'return',self.position,distance,self.fuel_max-self.fuel_current,f'Succesfully returned to base in {position}, with fuel usage: {self.fuel_used}',self.fuel_cost,self.total_revenue )
 
 class Truck(Vehicle):
     def __init__(self, name, position='Warsaw'):

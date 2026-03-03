@@ -87,8 +87,8 @@ def simulate_routes(df,fleet_cars):
                     distance_min = distance
                     closest = x
             print(f'Min distance for {row['vehicle']}: {round(distance_min,2)} {current_vehicle.position} ->{closest}')
-            current_vehicle.drive(distance_min)
             current_vehicle.position = closest
+            current_vehicle.drive(distance_min)
             cities_left.remove(closest)
             drives = drives + 1
 
