@@ -68,7 +68,7 @@ def simulate_routes(df,fleet_cars):
     
     for index,row in routes.iterrows():
         print(row['vehicle'])
-        drives = 0
+        drives = 1
         cities_left = list(row['destination'])
         for region, vehicle_list in fleet_cars.items():
             for vehicle in vehicle_list:
@@ -94,8 +94,6 @@ def simulate_routes(df,fleet_cars):
 
         distance = dist_calc(current_vehicle.position,base_location)
         print(f'Returned to base in {base_location}, {distance}')
-        current_vehicle.drive(distance)
-        current_vehicle.position = base_location
         current_vehicle.return_to_base(base_location,distance)
 
     vehicle_log_add(fleet_cars)

@@ -83,8 +83,8 @@ class Vehicle:
         
         
     def return_to_base(self,position,distance):
-        self.drive(distance)
         self.position = position
+        self.drive(distance)
         self.add_log(self.name,'return',self.position,distance,self.fuel_max-self.fuel_current,f'Succesfully returned to base in {position}, with fuel usage: {self.fuel_used}',self.fuel_cost,self.total_revenue )
 
 class Truck(Vehicle):
