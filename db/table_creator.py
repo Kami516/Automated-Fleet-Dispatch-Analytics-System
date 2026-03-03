@@ -8,6 +8,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS Packages(
         id INTEGER PRIMARY KEY,
         weight INTEGER,
+        volume REAL,
         destination TEXT,
         region TEXT,
         status INTEGER
@@ -19,6 +20,7 @@ def create_tables():
         name TEXT,
         position TEXT,
         max_load INTEGER,
+        volume_capacity REAL,
         fuel_max INTEGER,
         fuel_consumption INTEGER,
         region TEXT,
@@ -33,30 +35,33 @@ def insert_packages():
 
     data = [
         # North
-        (11, 350, 'Gdansk', 'North', 0),
-        (12, 120, 'Gdansk', 'North', 0),
-        (13, 15, 'Szczecin', 'North', 0),
-        (14, 200, 'Szczecin', 'North', 0),
-        (29, 85, 'Bialystok', 'North', 0),
-        (30, 10, 'Bialystok', 'North', 0),
+        (11, 350, 3.5, 'Gdansk', 'North', 0),
+        (12, 120, 0.8, 'Gdansk', 'North', 0),
+        (13, 15, 0.1, 'Szczecin', 'North', 0),
+        (14, 200, 1.5, 'Szczecin', 'North', 0),
+        (29, 85, 0.6, 'Bialystok', 'North', 0),
+        (30, 10, 0.1, 'Bialystok', 'North', 0),
+        
         # South
-        (15, 400, 'Katowice', 'South', 0),
-        (16, 50, 'Katowice', 'South', 0),
-        (17, 75, 'Krakow', 'South', 0),
-        (18, 5, 'Rzeszow', 'South', 0),
-        (19, 180, 'Rzeszow', 'South', 0),
+        (15, 400, 3.0, 'Katowice', 'South', 0),
+        (16, 50, 0.4, 'Katowice', 'South', 0),
+        (17, 75, 0.5, 'Krakow', 'South', 0),
+        (18, 5, 0.05, 'Rzeszow', 'South', 0),
+        (19, 180, 1.2, 'Rzeszow', 'South', 0),
+        
         # West
-        (25, 140, 'Poznan', 'West', 0),
-        (26, 60, 'Poznan', 'West', 0),
-        (27, 300, 'Wroclaw', 'West', 0),
-        (28, 45, 'Wroclaw', 'West', 0),
+        (25, 140, 1.0, 'Poznan', 'West', 0),
+        (26, 60, 0.4, 'Poznan', 'West', 0),
+        (27, 300, 2.0, 'Wroclaw', 'West', 0),
+        (28, 45, 0.3, 'Wroclaw', 'West', 0),
+        
         # Center
-        (23, 250, 'Lodz', 'Center', 0),
-        (24, 20, 'Lodz', 'Center', 0)
+        (23, 250, 1.8, 'Lodz', 'Center', 0),
+        (24, 20, 0.2, 'Lodz', 'Center', 0)
     ]
 
     script = (
-        '''INSERT INTO Packages(id,weight,destination,region,status) VALUES (?,?,?,?,?);
+        '''INSERT INTO Packages(id,weight,volume,destination,region,status) VALUES (?,?,?,?,?,?);
         '''
     )
 
@@ -74,8 +79,8 @@ def insert_vehicles():
     with sqlite3.connect('logistics_fleet.db') as conn:
 
         cur = conn.cursor()
-        query = '''INSERT INTO Vehicles (name, position, max_load, fuel_max, fuel_consumption, region, type)
-        VALUES(?,?,?,?,?,?,?)          
+        query = '''INSERT INTO Vehicles (name, position, max_load,volume_capacity, fuel_max, fuel_consumption, region, type)
+        VALUES(?,?,?,?,?,?,?,?)          
         '''
 
         for region_name, vehicle_list in fleet_cars.items():
@@ -85,6 +90,7 @@ def insert_vehicles():
                     v.name,
                     v.position,
                     v.max_load,
+                    v.volume_capacity,
                     v.fuel_max,
                     v.fuel_consumption,
                     region_name,

@@ -41,6 +41,7 @@ def load_packages(df, fleet_cars,packages):
             package = Package(
                 id=row['id'],
                 weight=row['weight'],
+                volume=row['volume'],
                 status=row['status'],
                 destination=row['destination'],
                 region=row['region']

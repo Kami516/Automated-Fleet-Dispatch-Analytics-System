@@ -1,8 +1,9 @@
 class Vehicle:
-    def __init__(self,name,position,max_load,fuel_max,fuel_consumption):
+    def __init__(self,name,position,max_load,volume_capacity,fuel_max,fuel_consumption):
         self.name = name
         self.position = position
         self.max_load = max_load
+        self.volume_capacity = volume_capacity
         self.fuel_max = fuel_max
         self.fuel_consumption= fuel_consumption
 
@@ -61,15 +62,19 @@ class Vehicle:
 
     def load(self,package):
         current_weight = sum(p.weight for p in self.current_load)
+        current_volume = sum(p.volume for p in self.current_load)
 
-        if (current_weight + package.weight) <= self.max_load:
+        if ((current_weight + package.weight) <= self.max_load) and ((current_volume + package.volume) <= self.volume_capacity):
             self.current_load.append(package)
             self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
-            print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {sum(p.weight for p in self.current_load)}')
-            self.add_log(self.name,'load',self.position,'0',self.fuel_max-self.fuel_current,f'loaded: {package.id}, with weight: {package.weight}',self.fuel_cost)
+            print(f'Package {package.id}, with weight: {package.weight}, loaded succesfully, current {self.name} load : {current_weight + package.weight} with {current_volume + package.volume} volume')
+            self.add_log(self.name,'load',self.position,'0',self.fuel_max-self.fuel_current,f'loaded: {package.id}, with weight: {package.weight} and {package.volume} volume',self.fuel_cost)
             return True
         else:
-            print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')
+            if ((current_volume + package.volume) <= self.volume_capacity):
+                print(f'Package {package.id}, with weight: {package.weight}, is to heavy for this vehicle, max load : {self.max_load}, current_load: {current_weight}')
+            else:
+                print(f'Package {package.id}, package volume: {package.volume}, is to big for this vehicle, volume capacity : {self.volume_capacity}, current_load: {current_volume}')
             return False
         
         
@@ -80,8 +85,8 @@ class Vehicle:
 
 class Truck(Vehicle):
     def __init__(self, name, position='Warsaw'):
-        super().__init__(name,position,max_load=600,fuel_max=500,fuel_consumption=35)
+        super().__init__(name,position,max_load=600,volume_capacity=5,fuel_max=500,fuel_consumption=35)
 
 class Van(Vehicle):
     def __init__(self, name, position='Warsaw'):
-        super().__init__(name,position, max_load=220, fuel_max=50,fuel_consumption=15)
+        super().__init__(name,position, max_load=220,volume_capacity=2, fuel_max=50,fuel_consumption=15)
