@@ -75,9 +75,9 @@ class Vehicle:
         current_volume = sum(p.volume for p in self.current_load)
 
         driver_salary_for_load_package = ((10/60) * self.hourly_rate)
-        self.driver_salary += driver_salary_for_load_package
 
         if ((current_weight + package.weight) <= self.max_load) and ((current_volume + package.volume) <= self.volume_capacity):
+            self.driver_salary += driver_salary_for_load_package
             self.current_load.append(package)
             self.total_revenue+=package.cost
             self.fuel_cost = float(self.fuel_used*self.fuel_avg_price)
