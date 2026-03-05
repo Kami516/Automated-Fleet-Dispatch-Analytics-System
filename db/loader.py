@@ -37,10 +37,11 @@ def package_update_db(df):
 
     loaded_packages = df[df['status']==True]
 
-    for index,row in loaded_packages.iterrows():
-        query = "UPDATE Packages SET status = 1 WHERE id = ?"
+    to_update = [(row['id'],) for index,row in loaded_packages.iterrows()]
 
-        cursor.execute(query, (row['id'],))
+    query = "UPDATE Packages SET status = 1 WHERE id = ?"
+
+    cursor.executemany(query, to_update)
 
     conn.commit()
     conn.close()
