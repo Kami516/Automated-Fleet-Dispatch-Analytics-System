@@ -2,6 +2,7 @@ import requests
 
 city_cache = {}
 dist_cache = {}
+geometry_cache = {}
 
 def get_coordinates(city):
 
@@ -20,19 +21,19 @@ def get_coordinates(city):
             data = response.json()
             lon = data[0].get('longitude')
             lan = data[0].get('latitude')
+            city_cache[city] = lon,lan
         else:
             print('Can`t connect to Api ', response.status_code)
             lon = 0
             lan = 0
-        city_cache[city] = lon,lan
 
         return lon,lan
 
 def dist_calc(departure, destination):
     cache_key = (departure , destination)
+    cache_key_rev = (destination,departure)
 
     if cache_key in dist_cache:
-
         return dist_cache[cache_key]
     else:
 
@@ -49,6 +50,7 @@ def dist_calc(departure, destination):
                 data = response.json()
                 distance = round((data['routes'][0]['distance'])/1000,2)
                 dist_cache[cache_key] = distance
+                dist_cache[cache_key_rev] = distance
                 return distance
             else:
                 print('Can`t connect to Api ', response.status_code)
@@ -59,24 +61,31 @@ def dist_calc(departure, destination):
             return 0
     
 def get_route_geometry(city1, city2):
-    lon_start,lat_start = get_coordinates(city1)
+    cache_key = (city1, city2)
 
-    lon_cel,lat_cel = get_coordinates(city2)
+    if cache_key in geometry_cache:
+        return geometry_cache[cache_key]
+    else:
 
-    url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=full&geometries=geojson'
+        lon_start,lat_start = get_coordinates(city1)
 
-    try:
-        response = requests.get(url, timeout=10)
+        lon_cel,lat_cel = get_coordinates(city2)
 
-        if response.status_code == 200:
-            data = response.json()
-            route = data['routes'][0]['geometry']['coordinates']
-            reverse_cords = [[lat,lon] for lon,lat in route]
-            return reverse_cords
-        else:
-            print('Can`t connect to Api ', response.status_code)
+        url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=full&geometries=geojson'
+
+        try:
+            response = requests.get(url, timeout=10)
+
+            if response.status_code == 200:
+                data = response.json()
+                route = data['routes'][0]['geometry']['coordinates']
+                reverse_cords = [[lat,lon] for lon,lat in route]
+                geometry_cache[cache_key] = reverse_cords
+                return reverse_cords
+            else:
+                print('Can`t connect to Api ', response.status_code)
+                return 0
+
+        except requests.exceptions.RequestException as e:
+            print(f"Network error in dist_calc: {e}")
             return 0
-
-    except requests.exceptions.RequestException as e:
-        print(f"Network error in dist_calc: {e}")
-        return 0
