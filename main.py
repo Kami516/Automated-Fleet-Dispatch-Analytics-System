@@ -12,8 +12,8 @@ def manager():
 
 def main():
     print("Hello from logistics-fleet-simulator!")
-    # manager()
-    # generate_maps()
+    manager()
+    #generate_maps()
     df = get_net_profit_per_vehicle()
     print(df)
 
