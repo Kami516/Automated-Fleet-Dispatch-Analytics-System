@@ -36,6 +36,9 @@ def load_packages(df, fleet_cars,packages):
 
         print(vehicles_in_region)
 
+        status_updates = {}
+        vehicle_updates = {}
+
         for index,row in sorted_df.iterrows():
 
             package = Package(
@@ -51,11 +54,16 @@ def load_packages(df, fleet_cars,packages):
             for vehicle in vehicles_in_region:
                 if(vehicle.load(package)):
                     is_loaded=True
-                    df.loc[index, 'status']=True
-                    df.loc[index, 'vehicle']=vehicle.name
+                    status_updates[index] = True
+                    vehicle_updates[index] = vehicle.name
                     break
             if not is_loaded:
                 print(f"Cannot load package {row['id']}, {row['weight']}")
+
+        for idx,status in status_updates.items():
+            df.at[idx,'status'] = status
+        for idx, v_name in vehicle_updates.items():
+            df.at[idx,'vehicle'] = v_name
     
     package_log_add(df)
     package_update_db(df)
