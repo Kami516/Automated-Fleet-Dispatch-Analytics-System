@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 city_cache = {}
 dist_cache = {}
@@ -11,8 +15,7 @@ def get_coordinates(city):
         return city_cache[city]
     else:
 
-        api_key = 'cOQBFbtzo3BuuVTHUtIHquQu1rLC3di912QzxEVr'
-        # api_key = 'Ls0QYdBZjdwY8weUCCdg4GqRcQ2mDFESEGguGFU7'
+        api_key = os.getenv('API_NINJAS_KEY')
         api_url = f'https://api.api-ninjas.com/v1/city?name={city}'
         headers = {'X-Api-Key': api_key}
         response = requests.get(api_url, headers=headers, timeout=10)
@@ -30,8 +33,7 @@ def get_coordinates(city):
         return lon,lan
 
 def dist_calc(departure, destination):
-    cache_key = (departure , destination)
-    cache_key_rev = (destination,departure)
+    cache_key = frozenset([departure, destination])
 
     if cache_key in dist_cache:
         return dist_cache[cache_key]
@@ -50,7 +52,6 @@ def dist_calc(departure, destination):
                 data = response.json()
                 distance = round((data['routes'][0]['distance'])/1000,2)
                 dist_cache[cache_key] = distance
-                dist_cache[cache_key_rev] = distance
                 return distance
             else:
                 print('Can`t connect to Api ', response.status_code)
