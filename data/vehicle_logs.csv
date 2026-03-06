@@ -1,56 +1,32 @@
 vehicle,action,location,distance_km,fuel_left,details,cost_of_fuel,cost_of_package,driver_salary
-Man_North_1,load,Warsaw,0,0.0,"loaded: 8, with weight: 385 and 3.4 volume. Cost: 3129.0",0.0,3129.0,10.0
-Man_North_1,load,Warsaw,0,0.0,"loaded: 4, with weight: 200 and 1.5 volume. Cost: 1630.0",0.0,1630.0,20.0
-Man_North_1,load,Warsaw,0,0.0,"loaded: 3, with weight: 15 and 0.1 volume. Cost: 136.0",0.0,136.0,30.0
-Man_North_1,drive,Szczecin,567.66,198.68,Route completed with fuel usage: 198.68099999999998,1122.55,,553.99
-Man_North_1,drive,Warsaw,567.66,397.36,Route completed with fuel usage: 397.36199999999997,2245.1,,1077.99
-Man_North_1,return,Warsaw,567.66,397.36,"Succesfully returned to base in Warsaw, with fuel usage: 397.36199999999997",2245.1,4895.0,1077.99
-Man_North_2,load,Warsaw,0,0.0,"loaded: 1, with weight: 350 and 3.5 volume. Cost: 2850.0",0.0,2850.0,10.0
-Man_North_2,load,Warsaw,0,0.0,"loaded: 7, with weight: 130 and 0.7 volume. Cost: 1062.0",0.0,1062.0,20.0
-Man_North_2,load,Warsaw,0,0.0,"loaded: 2, with weight: 120 and 0.8 volume. Cost: 983.0",0.0,983.0,30.0
-Man_North_2,drive,Gdansk,345.27,120.84,Route completed with fuel usage: 120.84449999999998,682.77,,348.71
-Man_North_2,drive,Warsaw,345.27,241.68,Route completed with fuel usage: 241.68899999999996,1365.54,,667.42
-Man_North_2,return,Warsaw,345.27,241.68,"Succesfully returned to base in Warsaw, with fuel usage: 241.68899999999996",1365.54,4895.0,667.42
-Sprinter_North,load,Warsaw,0,0.0,"loaded: 9, with weight: 125 and 1.3 volume. Cost: 1028.0",0.0,1028.0,6.67
+Man_North,load,Warsaw,0,0.0,"loaded: 8, with weight: 385 and 3.4 volume. Cost: 3129.0",0.0,3129.0,10.0
+Man_North,load,Warsaw,0,0.0,"loaded: 4, with weight: 200 and 1.5 volume. Cost: 1630.0",0.0,1630.0,20.0
+Man_North,load,Warsaw,0,0.0,"loaded: 3, with weight: 15 and 0.1 volume. Cost: 136.0",0.0,136.0,30.0
+Man_North,drive,Szczecin,567.66,198.68,Route completed with fuel usage: 198.68099999999998,1122.55,,553.99
+Man_North,drive,Warsaw,568.33,397.6,Route completed with fuel usage: 397.5965,2246.42,,1078.61
+Man_North,return,Warsaw,568.33,397.6,"Succesfully returned to base in Warsaw, with fuel usage: 397.5965",2246.42,4895.0,1078.61
+Sprinter_North,load,Warsaw,0,0.0,"loaded: 7, with weight: 130 and 0.7 volume. Cost: 1062.0",0.0,1062.0,6.67
 Sprinter_North,load,Warsaw,0,0.0,"loaded: 5, with weight: 85 and 0.6 volume. Cost: 701.0",0.0,701.0,13.33
-Sprinter_North,load,Warsaw,0,0.0,"loaded: 6, with weight: 10 and 0.1 volume. Cost: 96.0",0.0,96.0,20.0
-Sprinter_North,drive,Bialystok,201.1,30.17,Route completed with fuel usage: 30.165000000000003,170.43,,100.44
-Sprinter_North,refuel,Warsaw,0,0.0,refuel: 50,340.86,,180.88
-Sprinter_North,drive,Warsaw,201.1,39.66,Route completed with fuel usage: 60.330000000000005,340.86,,180.88
-Sprinter_North,return,Warsaw,201.1,10.34,"Succesfully returned to base in Warsaw, with fuel usage: 60.330000000000005",340.86,1825.0,180.88
-Scania_South_1,load,Warsaw,0,0.0,"loaded: 16, with weight: 525 and 4.5 volume. Cost: 4260.0",0.0,4260.0,10.0
-Scania_South_1,load,Warsaw,0,0.0,"loaded: 12, with weight: 75 and 0.5 volume. Cost: 620.0",0.0,620.0,20.0
-Scania_South_1,drive,Krakow,297.21,104.02,Route completed with fuel usage: 104.02349999999998,587.73,,294.35
-Scania_South_1,drive,Warsaw,297.21,208.04,Route completed with fuel usage: 208.04699999999997,1175.47,,568.7
-Scania_South_1,return,Warsaw,297.21,208.04,"Succesfully returned to base in Warsaw, with fuel usage: 208.04699999999997",1175.47,4880.0,568.7
-Scania_South_2,load,Warsaw,0,0.0,"loaded: 17, with weight: 415 and 3.75 volume. Cost: 3372.5",0.0,3372.5,10.0
-Scania_South_2,load,Warsaw,0,0.0,"loaded: 14, with weight: 180 and 1.2 volume. Cost: 1467.0",0.0,1467.0,20.0
-Scania_South_2,load,Warsaw,0,0.0,"loaded: 13, with weight: 5 and 0.05 volume. Cost: 55.5",0.0,55.5,30.0
-Scania_South_2,drive,Rzeszow,327.02,114.46,Route completed with fuel usage: 114.457,646.68,,331.86
-Scania_South_2,drive,Warsaw,327.02,228.92,Route completed with fuel usage: 228.914,1293.36,,633.73
-Scania_South_2,return,Warsaw,327.02,228.92,"Succesfully returned to base in Warsaw, with fuel usage: 228.914",1293.36,4895.0,633.73
-Scania_South_3,load,Warsaw,0,0.0,"loaded: 10, with weight: 400 and 3.0 volume. Cost: 3245.0",0.0,3245.0,10.0
-Scania_South_3,load,Warsaw,0,0.0,"loaded: 15, with weight: 150 and 1.6 volume. Cost: 1231.0",0.0,1231.0,20.0
-Scania_South_3,load,Warsaw,0,0.0,"loaded: 11, with weight: 50 and 0.4 volume. Cost: 419.0",0.0,419.0,30.0
-Scania_South_3,drive,Katowice,309.98,108.49,Route completed with fuel usage: 108.49300000000001,612.99,,316.14
-Scania_South_3,drive,Warsaw,309.98,216.98,Route completed with fuel usage: 216.98600000000002,1225.97,,602.27
-Scania_South_3,return,Warsaw,309.98,216.98,"Succesfully returned to base in Warsaw, with fuel usage: 216.98600000000002",1225.97,4895.0,602.27
+Sprinter_North,drive,Bialystok,201.1,30.17,Route completed with fuel usage: 30.165000000000003,170.43,,93.77
+Sprinter_North,refuel,Gdansk,0,0.0,refuel: 50,538.38,,267.44
+Sprinter_North,drive,Gdansk,434.16,4.71,Route completed with fuel usage: 95.28900000000002,538.38,,267.44
+Sprinter_North,refuel,Warsaw,0,0.0,refuel: 50,830.46,,405.29
+Sprinter_North,drive,Warsaw,344.63,3.02,Route completed with fuel usage: 146.98350000000002,830.46,,405.29
+Sprinter_North,return,Warsaw,344.63,46.98,"Succesfully returned to base in Warsaw, with fuel usage: 146.98350000000002",830.46,1763.0,405.29
+Scania_South,load,Warsaw,0,0.0,"loaded: 16, with weight: 525 and 4.5 volume. Cost: 4260.0",0.0,4260.0,10.0
+Scania_South,load,Warsaw,0,0.0,"loaded: 12, with weight: 75 and 0.5 volume. Cost: 620.0",0.0,620.0,20.0
+Scania_South,drive,Krakow,297.21,104.02,Route completed with fuel usage: 104.02349999999998,587.73,,294.35
+Scania_South,drive,Warsaw,296.06,207.64,Route completed with fuel usage: 207.6445,1173.19,,567.63
+Scania_South,return,Warsaw,296.06,207.64,"Succesfully returned to base in Warsaw, with fuel usage: 207.6445",1173.19,4880.0,567.63
+Berlingo_South,load,Warsaw,0,0.0,"loaded: 14, with weight: 180 and 1.2 volume. Cost: 1467.0",0.0,1467.0,6.67
+Berlingo_South,load,Warsaw,0,0.0,"loaded: 13, with weight: 5 and 0.05 volume. Cost: 55.5",0.0,55.5,13.33
+Berlingo_South,drive,Rzeszow,327.02,49.05,Route completed with fuel usage: 49.053,277.15,,144.14
+Berlingo_South,refuel,Warsaw,0,0.0,refuel: 50,555.59,,275.56
+Berlingo_South,drive,Warsaw,328.54,1.67,Route completed with fuel usage: 98.334,555.59,,275.56
+Berlingo_South,return,Warsaw,328.54,48.33,"Succesfully returned to base in Warsaw, with fuel usage: 98.334",555.59,1522.5,275.56
 Volvo_West,load,Warsaw,0,0.0,"loaded: 20, with weight: 300 and 2.0 volume. Cost: 2435.0",0.0,2435.0,10.0
 Volvo_West,load,Warsaw,0,0.0,"loaded: 23, with weight: 255 and 2.7 volume. Cost: 2082.0",0.0,2082.0,20.0
 Volvo_West,load,Warsaw,0,0.0,"loaded: 21, with weight: 45 and 0.3 volume. Cost: 378.0",0.0,378.0,30.0
 Volvo_West,drive,Wroclaw,356.56,124.8,Route completed with fuel usage: 124.79599999999999,705.1,,359.13
-Volvo_West,drive,Warsaw,356.56,249.6,Route completed with fuel usage: 249.59199999999998,1410.19,,688.26
-Volvo_West,return,Warsaw,356.56,249.6,"Succesfully returned to base in Warsaw, with fuel usage: 249.59199999999998",1410.19,4895.0,688.26
-Sprinter_West,load,Warsaw,0,0.0,"loaded: 18, with weight: 140 and 1.0 volume. Cost: 1145.0",0.0,1145.0,6.67
-Sprinter_West,load,Warsaw,0,0.0,"loaded: 19, with weight: 60 and 0.4 volume. Cost: 499.0",0.0,499.0,13.33
-Sprinter_West,load,Warsaw,0,0.0,"loaded: 22, with weight: 20 and 0.6 volume. Cost: 181.0",0.0,181.0,20.0
-Sprinter_West,drive,Poznan,311.86,46.78,Route completed with fuel usage: 46.779,264.3,,144.74
-Sprinter_West,refuel,Warsaw,0,0.0,refuel: 50,528.6,,269.49
-Sprinter_West,drive,Warsaw,311.86,6.44,Route completed with fuel usage: 93.558,528.6,,269.49
-Sprinter_West,return,Warsaw,311.86,43.56,"Succesfully returned to base in Warsaw, with fuel usage: 93.558",528.6,1825.0,269.49
-Daf_Center,load,Warsaw,0,0.0,"loaded: 26, with weight: 330 and 3.0 volume. Cost: 2685.0",0.0,2685.0,10.0
-Daf_Center,load,Warsaw,0,0.0,"loaded: 24, with weight: 250 and 1.8 volume. Cost: 2033.0",0.0,2033.0,20.0
-Daf_Center,load,Warsaw,0,0.0,"loaded: 25, with weight: 20 and 0.2 volume. Cost: 177.0",0.0,177.0,30.0
-Daf_Center,drive,Lodz,129.46,45.31,Route completed with fuel usage: 45.311,256.01,,149.5
-Daf_Center,drive,Warsaw,129.46,90.62,Route completed with fuel usage: 90.622,512.01,,269.0
-Daf_Center,return,Warsaw,129.46,90.62,"Succesfully returned to base in Warsaw, with fuel usage: 90.622",512.01,4895.0,269.0
+Volvo_West,drive,Warsaw,356.95,249.73,Route completed with fuel usage: 249.7285,1410.97,,688.62
+Volvo_West,return,Warsaw,356.95,249.73,"Succesfully returned to base in Warsaw, with fuel usage: 249.7285",1410.97,4895.0,688.62

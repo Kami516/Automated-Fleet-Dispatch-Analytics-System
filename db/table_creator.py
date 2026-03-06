@@ -79,10 +79,9 @@ def insert_packages():
 
 def insert_vehicles():
     fleet_cars = {
-        'North' : [Truck('Man_North_1'), Truck('Man_North_2'), Van('Sprinter_North')],
-        'South' : [Truck('Scania_South_1'), Truck('Scania_South_2'), Truck('Scania_South_3')],
-        'West' : [Truck('Volvo_West'), Van('Sprinter_West')],
-        'Center' : [Truck('Daf_Center')]     
+        'North' : [Truck('Man_North'),Van('Sprinter_North')],
+        'South' : [Truck('Scania_South'),Van('Berlingo_South')],
+        'West' : [Truck('Volvo_West')],
     }
 
     with sqlite3.connect('logistics_fleet.db') as conn:

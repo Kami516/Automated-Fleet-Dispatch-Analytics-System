@@ -33,7 +33,7 @@ def get_coordinates(city):
         return lon,lan
 
 def dist_calc(departure, destination):
-    cache_key = frozenset([departure, destination])
+    cache_key = (departure, destination)
 
     if cache_key in dist_cache:
         return dist_cache[cache_key]
