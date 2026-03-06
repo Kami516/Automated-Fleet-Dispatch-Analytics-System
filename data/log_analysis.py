@@ -2,9 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('data/vehicle_logs.csv')
-
 def get_vehicle_route():
+    df = pd.read_csv('data/vehicle_logs.csv')
     df = df.groupby('vehicle')['location'].unique().reset_index()
     df['location'] = df['location'].apply(lambda x: list(x) + ['Warsaw'])
 
@@ -19,6 +18,7 @@ def get_net_profit_per_vehicle():
     return result
 
 def matplotlib_plot():
+    df = pd.read_csv('data/vehicle_logs.csv')
     result = get_net_profit_per_vehicle()
 
     plt.bar(result['vehicle'], result['net_profit'])
