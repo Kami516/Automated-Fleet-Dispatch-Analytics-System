@@ -35,29 +35,38 @@ def insert_packages():
 
     data = [
         # North
-        (11, 350, 3.5, 'Gdansk', 'North', 0),
-        (12, 120, 0.8, 'Gdansk', 'North', 0),
-        (13, 15, 0.1, 'Szczecin', 'North', 0),
-        (14, 200, 1.5, 'Szczecin', 'North', 0),
-        (29, 85, 0.6, 'Bialystok', 'North', 0),
-        (30, 10, 0.1, 'Bialystok', 'North', 0),
+        (1, 350, 3.5, 'Gdansk', 'North', 0),
+        (2, 120, 0.8, 'Gdansk', 'North', 0),
+        (3, 15, 0.1, 'Szczecin', 'North', 0),
+        (4, 200, 1.5, 'Szczecin', 'North', 0),
+        (5, 85, 0.6, 'Bialystok', 'North', 0),
+        (6, 10, 0.1, 'Bialystok', 'North', 0),
+        (7, 130, 0.7, 'Gdansk', 'North', 0),
+        (8, 385, 3.4, 'Szczecin', 'North', 0),
+        (9, 125, 1.3, 'Bialystok', 'North', 0),
         
         # South
-        (15, 400, 3.0, 'Katowice', 'South', 0),
-        (16, 50, 0.4, 'Katowice', 'South', 0),
-        (17, 75, 0.5, 'Krakow', 'South', 0),
-        (18, 5, 0.05, 'Rzeszow', 'South', 0),
-        (19, 180, 1.2, 'Rzeszow', 'South', 0),
+        (10, 400, 3.0, 'Katowice', 'South', 0),
+        (11, 50, 0.4, 'Katowice', 'South', 0),
+        (12, 75, 0.5, 'Krakow', 'South', 0),
+        (13, 5, 0.05, 'Rzeszow', 'South', 0),
+        (14, 180, 1.2, 'Rzeszow', 'South', 0),
+        (15, 150, 1.6, 'Katowice', 'South', 0),
+        (16, 525, 4.5, 'Krakow', 'South', 0),
+        (17, 415, 3.75, 'Rzeszow', 'South', 0),
         
         # West
-        (25, 140, 1.0, 'Poznan', 'West', 0),
-        (26, 60, 0.4, 'Poznan', 'West', 0),
-        (27, 300, 2.0, 'Wroclaw', 'West', 0),
-        (28, 45, 0.3, 'Wroclaw', 'West', 0),
+        (18, 140, 1.0, 'Poznan', 'West', 0),
+        (19, 60, 0.4, 'Poznan', 'West', 0),
+        (20, 300, 2.0, 'Wroclaw', 'West', 0),
+        (21, 45, 0.3, 'Wroclaw', 'West', 0),
+        (22, 20, 0.6, 'Poznan', 'West', 0),
+        (23, 255, 2.7, 'Wroclaw', 'West', 0),
         
         # Center
-        (23, 250, 1.8, 'Lodz', 'Center', 0),
-        (24, 20, 0.2, 'Lodz', 'Center', 0)
+        (24, 250, 1.8, 'Lodz', 'Center', 0),
+        (25, 20, 0.2, 'Lodz', 'Center', 0),
+        (26, 330, 3.0, 'Lodz', 'Center', 0)
     ]
 
     script = (
@@ -70,9 +79,9 @@ def insert_packages():
 
 def insert_vehicles():
     fleet_cars = {
-        'North' : [Truck('Man_North'),Van('Sprinter_North')],
-        'South' : [Truck('Scania_South'),Van('Berlingo_South')],
-        'West' : [Truck('Volvo_West')],
+        'North' : [Truck('Man_North_1'), Truck('Man_North_2'), Van('Sprinter_North')],
+        'South' : [Truck('Scania_South_1'), Truck('Scania_South_2'), Truck('Scania_South_3')],
+        'West' : [Truck('Volvo_West'), Van('Sprinter_West')],
         'Center' : [Truck('Daf_Center')]     
     }
 

@@ -10,12 +10,16 @@ def manager():
     loaded_df = load_packages(df, fleet_cars,packages)
     simulate_routes(loaded_df, fleet_cars)
 
+def data_anylyst():
+    df = get_net_profit_per_vehicle()
+    print(df)
+
+
 def main():
     print("Hello from logistics-fleet-simulator!")
     manager()
     #generate_maps()
-    df = get_net_profit_per_vehicle()
-    print(df)
+    data_anylyst()
 
 if __name__ == "__main__":
     main()

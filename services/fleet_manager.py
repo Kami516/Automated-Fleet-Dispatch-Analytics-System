@@ -84,7 +84,7 @@ def simulate_routes(df,fleet_cars):
                     current_vehicle = vehicle
                     break
 
-        while drives < len(row['destination']):
+        while cities_left:
             distance_min = 5000
             closest = ''
 
@@ -94,7 +94,7 @@ def simulate_routes(df,fleet_cars):
                 if distance < distance_min:
                     distance_min = distance
                     closest = x
-            print(f'Min distance for {row['vehicle']}: {round(distance_min,2)} {current_vehicle.position} ->{closest}')
+            print(f"Min distance for {row['vehicle']}: {round(distance_min,2)} {current_vehicle.position} ->{closest}")
             current_vehicle.position = closest
             current_vehicle.drive(distance_min)
             cities_left.remove(closest)
