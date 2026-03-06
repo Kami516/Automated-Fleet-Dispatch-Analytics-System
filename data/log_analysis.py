@@ -1,4 +1,7 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
 df = pd.read_csv('data/vehicle_logs.csv')
 
 def get_vehicle_route():
@@ -14,3 +17,15 @@ def get_net_profit_per_vehicle():
     result['net_profit'] = result['cost_of_package'] - (result['cost_of_fuel'] + result['driver_salary'])
 
     return result
+
+def matplotlib_plot():
+    result = get_net_profit_per_vehicle()
+
+    plt.bar(result['vehicle'], result['net_profit'])
+    plt.xlabel("Vehicle name")
+    plt.xticks(rotation=15)
+    plt.ylabel("Net Profit")
+    plt.title("Net profit per vehicle")
+    plt.tight_layout()
+    plt.savefig('net-profit.png')
+    plt.close()

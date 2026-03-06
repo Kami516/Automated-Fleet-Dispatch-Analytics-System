@@ -2,7 +2,7 @@ from services.fleet_manager import load_data,load_packages,simulate_routes
 from db.table_creator import create_db
 from utils.map_generator import generate_maps
 from utils.map_utils import get_route_geometry
-from data.log_analysis import get_net_profit_per_vehicle
+from data.log_analysis import get_net_profit_per_vehicle,matplotlib_plot
 
 def manager():
     create_db()
@@ -12,12 +12,13 @@ def manager():
 
 def data_anylyst():
     df = get_net_profit_per_vehicle()
+    matplotlib_plot()
     print(df)
 
 
 def main():
     print("Hello from logistics-fleet-simulator!")
-    manager()
+    # manager()
     #generate_maps()
     data_anylyst()
 
