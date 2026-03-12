@@ -6,7 +6,7 @@ from utils.map_generator import generate_maps
 import streamlit.components.v1 as components
 from data.log_analysis import get_vehicle_route, get_net_profit_per_vehicle, matplotlib_plot, matplotlib_distance_plot, matplotlib_fuel_plot
 
-st.set_page_config(page_title="Fleet Simulator UI", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Automated Fleet Dispatch & Analytics System", layout="wide", initial_sidebar_state="expanded")
 
 # --- Custom CSS for polishing ---
 st.markdown("""
@@ -21,7 +21,7 @@ try:
 except Exception:
     df_global, fleet_cars_global, packages_global = [], {}, []
 
-st.sidebar.markdown('##  **Fleet UI Pilot**')
+st.sidebar.markdown('##  **Automated Fleet Dispatch & Analytics System**')
 st.sidebar.markdown('---')
 page = st.sidebar.radio("Navigation", 
                         ["Dashboard", "Tracking Center", "Financial Reports"],
