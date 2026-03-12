@@ -1,5 +1,6 @@
 import requests
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -45,21 +46,27 @@ def dist_calc(departure, destination):
 
         url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=false'
 
-        try:
-            response = requests.get(url, timeout=10)
+        for attempt in range(3):
+            try:
+                time.sleep(1) # Base delay to respect OSRM public rate limit
+                response = requests.get(url, timeout=10)
 
-            if response.status_code == 200:
-                data = response.json()
-                distance = round((data['routes'][0]['distance'])/1000,2)
-                dist_cache[cache_key] = distance
-                return distance
-            else:
-                print('Can`t connect to Api ', response.status_code)
+                if response.status_code == 200:
+                    data = response.json()
+                    distance = round((data['routes'][0]['distance'])/1000,2)
+                    dist_cache[cache_key] = distance
+                    return distance
+                elif response.status_code == 429:
+                    print(f'Rate limit hit in dist_calc (attempt {attempt+1}), retrying...')
+                    time.sleep(2)
+                else:
+                    print('Can`t connect to Api ', response.status_code)
+                    return 0
+
+            except requests.exceptions.RequestException as e:
+                print(f"Network error in dist_calc: {e}")
                 return 0
-
-        except requests.exceptions.RequestException as e:
-            print(f"Network error in dist_calc: {e}")
-            return 0
+        return 0
     
 def get_route_geometry(city1, city2):
     cache_key = (city1, city2)
@@ -74,19 +81,25 @@ def get_route_geometry(city1, city2):
 
         url = f'http://router.project-osrm.org/route/v1/driving/{lon_start},{lat_start};{lon_cel},{lat_cel}?overview=full&geometries=geojson'
 
-        try:
-            response = requests.get(url, timeout=10)
+        for attempt in range(3):
+            try:
+                time.sleep(1) # Base delay to respect OSRM public rate limit
+                response = requests.get(url, timeout=10)
 
-            if response.status_code == 200:
-                data = response.json()
-                route = data['routes'][0]['geometry']['coordinates']
-                reverse_cords = [[lat,lon] for lon,lat in route]
-                geometry_cache[cache_key] = reverse_cords
-                return reverse_cords
-            else:
-                print('Can`t connect to Api ', response.status_code)
+                if response.status_code == 200:
+                    data = response.json()
+                    route = data['routes'][0]['geometry']['coordinates']
+                    reverse_cords = [[lat,lon] for lon,lat in route]
+                    geometry_cache[cache_key] = reverse_cords
+                    return reverse_cords
+                elif response.status_code == 429:
+                    print(f'Rate limit hit in get_route_geometry (attempt {attempt+1}), retrying...')
+                    time.sleep(2)
+                else:
+                    print('Can`t connect to Api ', response.status_code)
+                    return 0
+
+            except requests.exceptions.RequestException as e:
+                print(f"Network error in get_route_geometry: {e}")
                 return 0
-
-        except requests.exceptions.RequestException as e:
-            print(f"Network error in dist_calc: {e}")
-            return 0
+        return 0

@@ -41,8 +41,8 @@ def generate_maps():
 
         for city1,city2 in pairwise(route_list['route']):
             detailed_route = get_route_geometry(city1,city2)
-
-            folium.PolyLine(locations=detailed_route, color='blue', weight=4).add_to(map)
+            if detailed_route != 0:
+                folium.PolyLine(locations=detailed_route, color='blue', weight=4).add_to(map)
 
         file_path = f"utils/map_{route_list['vehicle']}.html"
 
