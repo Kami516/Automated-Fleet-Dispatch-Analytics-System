@@ -48,7 +48,7 @@ def dist_calc(departure, destination):
 
         for attempt in range(3):
             try:
-                time.sleep(1) # Base delay to respect OSRM public rate limit
+                time.sleep(1)
                 response = requests.get(url, timeout=10)
 
                 if response.status_code == 200:

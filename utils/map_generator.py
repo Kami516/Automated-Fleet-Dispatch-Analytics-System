@@ -38,7 +38,7 @@ def generate_maps():
                         text_color='red'
                     )
                 ).add_to(map)
-
+ 
         for city1,city2 in pairwise(route_list['route']):
             detailed_route = get_route_geometry(city1,city2)
             if detailed_route != 0:
