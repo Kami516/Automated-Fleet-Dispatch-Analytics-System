@@ -37,12 +37,21 @@ if page == "Dashboard":
     active_regions = len(fleet_cars_global.keys()) if isinstance(fleet_cars_global, dict) else 0
     
     cols = st.columns(3)
+    
     with cols[0]:
-        ui.metric_card(title="Total Vehicles", content=str(total_vehicles), description="Deployed in fleet", key="m1")
+        with st.container(border=True):
+            st.metric(label="Total Vehicles", value=str(total_vehicles))
+            st.caption("Deployed in fleet")
+            
     with cols[1]:
-        ui.metric_card(title="Packages for Today", content=str(total_packages), description="Number of packages for today", key="m2")
+        with st.container(border=True):
+            st.metric(label="Packages for Today", value=str(total_packages))
+            st.caption("Number of packages for today")
+            
     with cols[2]:
-        ui.metric_card(title="Active Regions", content=str(active_regions), description="Operational sectors", key="m3")
+        with st.container(border=True):
+            st.metric(label="Active Regions", value=str(active_regions))
+            st.caption("Operational sectors")
 
     st.markdown("<br/>", unsafe_allow_html=True)
     
@@ -94,9 +103,9 @@ if page == "Financial Reports":
     st.markdown("Analyze fleet profitability, efficiency, and logistical performance.")
     
     try:
-        tab_selected = ui.tabs(options=["Overview & Charts", "Raw Performance Data"], default_value="Overview & Charts", key="fin_tabs")
+        tab1, tab2 = st.tabs(["Overview & Charts", "Raw Performance Data"])
         
-        if tab_selected == "Overview & Charts":
+        with tab1:
             st.markdown("### Executive Visual Summary")
             
             with st.container(border=True):
@@ -117,7 +126,7 @@ if page == "Financial Reports":
                     fig_fuel = matplotlib_fuel_plot()
                     st.pyplot(fig_fuel)
                     
-        else: 
+        with tab2: 
             with st.container(border=True):
                 st.subheader("Vehicle Delivery Routes")
                 routes_df = get_vehicle_route()
